@@ -10,8 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_22_103715) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "buildings", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.string "colour"
+    t.string "type"
+    t.integer "player_id", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_buildings_on_player_id"
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.string "name"
+    t.integer "money", default: 16
+    t.integer "position", default: 0
+    t.boolean "is_alive", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "turn"
+    t.bigint "game_id"
+    t.index ["game_id"], name: "index_players_on_game_id"
+  end
+
+  add_foreign_key "buildings", "players"
+  add_foreign_key "players", "games"
 end

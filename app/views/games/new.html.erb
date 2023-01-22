@@ -1,0 +1,19 @@
+<h1>Welcome to Monopoly Game</h1>
+
+<p>wanna start a new game?</p>
+
+<%= form_with model: @game do |form| %>
+  Players:
+  <ul>
+    <%= form.fields_for :players do |player| %>
+      <li>
+        <%= player.label :name %>
+         <%= player.text_field :name %>
+      </li>
+    <% end %>
+    <%= form.submit %>
+  </ul>
+<% end %>
+
+<button>see a demo game 01</button>
+<button>see a demo game 02</button>
