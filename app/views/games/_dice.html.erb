@@ -1,0 +1,60 @@
+<div id="dice" data-controller="dice">
+<%# <button type="button" class="btn m-2" id="rollbutton">roll the dice</button> %>
+  <div data-action="click->dice#roll" data-dice-target="diceface">
+    <div class="dice first-face" style="display: inline-flex">
+      <span class="dot">
+      </span>
+    </div>
+
+    <div class="dice second-face" style="display: none">
+      <span class="dot">
+      </span>
+      <span class="dot">
+      </span>
+    </div>
+
+    <div class="dice third-face" style="display: none">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+    <div class="fourth-face dice" style="display: none">
+    <div class="column">
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+    <div class="column">
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+    </div>
+
+    <div class="fifth-face dice" style="display: none">
+    <div class="column">
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+    <div class="column">
+        <span class="dot"></span>
+    </div>
+    <div class="column">
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+    </div>
+
+    <div class="sixth-face dice" style="display: none">
+    <div class="column">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+    <div class="column">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+    </div>
+    </div>
+</div>

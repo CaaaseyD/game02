@@ -6,72 +6,16 @@
     <div>
       <div>
         <ul>
-          <% players = @game.players %>
-          <% players.map do |player| %>
-              <li>Player: <%= player.name %> | Money: $<%= player.money %></li>
+          <% @players.each do |player| %>
+              <li>Player: <%= player.name %> | Money: $<%= player.money %> | Order: <%= player.turn %></li>
             <% end %>
         </ul>
       </div>
-
-      <div id="dice" data-controller="dice">
-        <button data-action="click->dice#roll" type="button" class="btn m-2" id="roll">roll the dice</button>
-        <div data-dice-target="diceface">
-          <div class="dice first-face">
-            <span class="dot">
-            </span>
-          </div>
-
-          <div class="dice second-face">
-            <span class="dot">
-            </span>
-            <span class="dot">
-            </span>
-          </div>
-
-          <div class="dice third-face">
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-          </div>
-
-          <div class="fourth-face dice">
-            <div class="column">
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
-            <div class="column">
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
-          </div>
-
-          <div class="fifth-face dice">
-            <div class="column">
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
-            <div class="column">
-              <span class="dot"></span>
-            </div>
-            <div class="column">
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
-          </div>
-
-          <div class="sixth-face dice">
-            <div class="column">
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
-            <div class="column">
-              <span class="dot"></span>
-              <span class="dot"></span>
-                  <span class="dot"></span>
-            </div>
-          </div>
-        </div>
+      <div>
+      <%= render "dice" %>
+      </div>
+      <div>
+      <%= render 'result' %>
       </div>
     </div>
 
@@ -79,26 +23,35 @@
       <table id="board" style="display: table;" data-controller='table'>
         <tbody>
           <tr>
-            <td class="cell board-top" id="cell"><div class="cell-anchor"><div class="cell-name"></div></div></td>
-            <td class="cell board-top" id="cell1"><div class="cell-anchor"><div class="cell-owner"></div><div class="cell-name"></div></div></td>
-            <td class="cell board-top" id="cell2"><div class="cell-anchor"><div class="cell-owner"></div><div class="cell-name"></div></div></td>
-            <td class="cell board-corner" id="cell"><div class="cell-anchor"><div class="cell-name"></div></div></td>
+            <td class="start" id="cell0">
+              <div class="row row-cols-2">
+                <div class="col d-flex align-items-start"><div class="player player1 active"></div></div>
+                <div class="col d-flex align-items-start justify-content-end"><div class="player player2 active"></div></div>
+                <div class="col d-flex align-items-end"><div class="player player3 active"></div></div>
+                <div class="col d-flex align-items-end justify-content-end"><div class="player player4 active"></div></div>
+              </div>
+            </td>
+            <td class="cell" id="cell1"></td>
+            <td class="cell" id="cell2"></td>
+            <td class="board-center"></td>
           </tr>
           <tr>
-            <td class="cell board-left" id="cell7"><div class="cell-anchor"><div class="cell-owner"></div><div class="cell-name"></div></div></td>
-            <td colspan="2" class="board-center"></td>
-            <td class="cell board-right" id="cell3"><div class="cell-anchor"><div class="cell-owner"></div><div class="cell-name"></div></div></td>
+            <td class="cell" id="cell8"></td>
+            <td class="board-center"></td>
+            <td class="board-center"></td>
+            <td class="cell" id="cell3"></td>
           </tr>
           <tr>
-            <td class="cell board-left" id="cell6"><div class="cell-anchor"><div class="cell-owner"></div><div class="cell-name"></div></div></td>
-            <td colspan="2" class="board-center"></td>
-            <td class="cell board-right" id="cell4"><div class="cell-anchor"><div class="cell-owner"></div><div class="cell-name"></div></div></td>
+            <td class="cell" id="cell7"></td>
+            <td class="board-center text-center align-top"></td>
+            <td class="board-center"></td>
+            <td class="cell" id="cell4"></td>
           </tr>
           <tr>
-            <td class="cell board-corner" id="cell"><div class="cell-anchor"><div class="cell-name"></div></div></td>
-            <td class="cell board-bottom" id="cell6"><div class="cell-anchor"><div class="cell-owner"></div><div class="cell-name"></div></div></td>
-            <td class="cell board-bottom" id="cell5"><div class="cell-anchor"><div class="cell-owner"></div><div class="cell-name"></div></div></td>
-            <td class="cell board-corner" id="cell"><div class="cell-anchor"><div class="cell-name"></div></div></td>
+            <td class="board-center"></td>
+            <td class="cell" id="cell6"></td>
+            <td class="cell" id="cell5"></td>
+            <td class="board-center"></td>
           </tr>
         </tbody>
       </table>

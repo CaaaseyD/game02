@@ -1,11 +1,19 @@
 // credit to
 // https://betterprogramming.pub/creating-dice-in-flexbox-in-css-a02a5d85e516
-#roll{
+#rollbutton{
   background-color: white;
   color: tomato;
   font-weight: 500;
   border: 1px solid tomato;
   border-radius: 5px;
+}
+#rollbutton:hover{
+  background-color: tomato;
+  color: white;
+  font-weight: 600;
+  border: 1px solid tomato;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .first-face {
@@ -16,15 +24,14 @@
 .dice {
   padding: 4px;
   background-color: tomato;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 10%;
-  margin-right : 10px;
 }
 .dot{
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background-color:white;
 }

@@ -1,16 +1,136 @@
 #board{
-  height: 400px;
-  width: 600px;
-}
-.cell{
-  height: 100px;
-  width: 150px;
+  height: 480px;
+  width: 720px;
+  border: 1px solid tomato;
+  border-radius: 10px;
 }
 
-.board-top,
-.board-bottom,
-.board-left,
-.board-right {
-  border: 2px solid black;
-  margin: 10px;
+.cell, .start{
+  height: 100px;
+  width: 180px;
+  text-align: center;
+  align-items: center;
+  border: 1px solid tomato;
+}
+
+.board-center{
+  height: 100px;
+  width: 180px;
+}
+
+.row {
+  height: 90%;
+  width: 100%;
+  margin: 0;
+}
+
+.col {
+  padding: 0;
+}
+
+#cell0 {
+  background-image: url("icons8-go.png");
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
+  background-position: center;
+}
+
+#cell1 {
+  background-image: url("icons8-brown.png");
+  background-repeat: no-repeat;
+  background-size: 50px 50px;
+  background-position: center;
+}
+
+#cell2 {
+  background-image: url("icons8-brown.png");
+  background-repeat: no-repeat;
+  background-size: 50px 50px;
+  background-position: center;
+}
+
+#cell3 {
+  background-image: url("icons8-red.png");
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  background-position: center;
+}
+
+#cell4 {
+  background-image: url("icons8-red.png");
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  background-position: center;
+}
+
+#cell5 {
+  background-image: url("icons8-green.png");
+  background-repeat: no-repeat;
+  background-size: 50px 50px;
+  background-position: center;
+}
+
+#cell6 {
+  background-image: url("icons8-green.png");
+  background-repeat: no-repeat;
+  background-size: 50px 50px;
+  background-position: center;
+}
+
+#cell7 {
+  background-image: url("icons8-blue.png");
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  background-position: center;
+}
+
+#cell8 {
+  background-image: url("icons8-blue.png");
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  background-position: center;
+}
+
+.player1 {
+  height: 40px;
+  width: 40px;
+}
+.player1.active {
+  background-image: url('icons8-insect-64.png');
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  background-position: center;
+}
+
+.player2 {
+  height: 40px;
+  width: 40px;
+}
+.player2.active {
+  background-image: url('icons8-lamb-64.png');
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  background-position: center;
+}
+
+.player3 {
+  height: 40px;
+  width: 40px;
+}
+.player3.active {
+  background-image: url('icons8-snake-64.png');
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  background-position: center;
+}
+
+.player4 {
+  height: 40px;
+  width: 40px;
+}
+.player4.active {
+  background-image: url('icons8-female-lion-64.png');
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  background-position: center;
 }
