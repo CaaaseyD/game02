@@ -1,0 +1,16 @@
+#board{
+  height: 400px;
+  width: 600px;
+}
+.cell{
+  height: 100px;
+  width: 150px;
+}
+
+.board-top,
+.board-bottom,
+.board-left,
+.board-right {
+  border: 2px solid black;
+  margin: 10px;
+}
