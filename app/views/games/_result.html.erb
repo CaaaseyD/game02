@@ -1,8 +1,13 @@
 
 
 
-<p>Current Player is: </p>
-<p>Current Position is: </p>
-<p>Please roll the dice! </p>
-<p>The dice number is: </p>
-<div id="dicenumber"></div>
+Current Player is: <div id ="cur_player_name"><%= @players[0].name %></div>
+Current Position is: <div id ="cur_player_name"><%= @players[0].position %></div>
+Please roll the dice!
+The dice number is:
+<div class="p-3" id="dicenumber">
+......
+</div>
+
+<%= content_tag :div, class: "players_class", data: {players: @players} do %>
+<% end %>

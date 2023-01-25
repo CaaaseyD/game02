@@ -12,18 +12,16 @@
         </ul>
       </div>
       <div>
+        <%= render 'result' %>
+      </div>
       <%= render "dice" %>
-      </div>
-      <div>
-      <%= render 'result' %>
-      </div>
     </div>
 
     <div>
       <table id="board" style="display: table;" data-controller='table'>
         <tbody>
           <tr>
-            <td class="start" id="cell0">
+            <td class="start" id='cell0' data-index='0'>
               <div class="row row-cols-2">
                 <div class="col d-flex align-items-start"><div class="player player1 active"></div></div>
                 <div class="col d-flex align-items-start justify-content-end"><div class="player player2 active"></div></div>
@@ -31,30 +29,48 @@
                 <div class="col d-flex align-items-end justify-content-end"><div class="player player4 active"></div></div>
               </div>
             </td>
-            <td class="cell" id="cell1"></td>
-            <td class="cell" id="cell2"></td>
+            <td class="cell" id='cell1' data-index='1'></td>
+            <td class="cell" id='cell2' data-index='2'></td>
             <td class="board-center"></td>
           </tr>
           <tr>
-            <td class="cell" id="cell8"></td>
+            <td class="cell" id='cell8' data-index='8'></td>
             <td class="board-center"></td>
             <td class="board-center"></td>
-            <td class="cell" id="cell3"></td>
+            <td class="cell" id='cell3' data-index='3'></td>
           </tr>
           <tr>
-            <td class="cell" id="cell7"></td>
+            <td class="cell" id='cell7' data-index='7'></td>
             <td class="board-center text-center align-top"></td>
             <td class="board-center"></td>
-            <td class="cell" id="cell4"></td>
+            <td class="cell" id='cell4' data-index='4'></td>
           </tr>
           <tr>
             <td class="board-center"></td>
-            <td class="cell" id="cell6"></td>
-            <td class="cell" id="cell5"></td>
+            <td class="cell" id='cell6' data-index='6'></td>
+            <td class="cell" id='cell5' data-index='5'></td>
             <td class="board-center"></td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
+</div>
+
+<div class="d-none buildings_class">
+<% @buildings.each do |b| %>
+<li><%= b.name %></li>
+<% end %>
+</div>
+
+<div class="main">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
 </div>

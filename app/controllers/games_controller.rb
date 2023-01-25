@@ -16,6 +16,19 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @players = decide_turn(@game)
+    @buildings = Building.all
+  end
+
+  def gamerun(player, dicenumber)
+    #Players take turns to roll the dice
+    newGame.move(dicenumber, player)
+    newGame.pay_rent(player)
+    # Show the result of this turn
+    newGame.status(dicenumber, player)
+    sleep(0.5)
+    # Check the player is alive or not
+    if newGame.check_is_alive?(player) == false
+    end
   end
 
   def decide_turn(game)
@@ -25,11 +38,12 @@ class GamesController < ApplicationController
     selected << (myArray - selected).sample
     selected << (myArray - selected).sample
     selected << (myArray - selected).sample
-    players = game.players.map
+    players = game.players.to_a
     for i in 0..3
-      players.next.turn = selected[i]
+      players[i].turn = selected[i]
     end
-    return @game.players.to_a
+    players.each{ |p| p.save}
+    return players.sort! {|x, y| x["turn"] <=> y["turn"]}
   end
 
 
