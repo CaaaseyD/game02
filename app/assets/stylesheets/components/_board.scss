@@ -1,53 +1,54 @@
 .main {
     position: relative;
-    border: 2px dotted #000000;
     border-radius: 50%;
     width: 500px;
     height: 500px;
+    top: -40px;
+    left: -30px;
 }
 
 .circle {
     position: absolute;
     left: calc(50% - 25px);
     top: calc(50% - 25px);
-    height: 150px;
-    width: 150px;
-    border: 2px dotted #000000;
+    height: 120px;
+    width: 120px;
+    border: 2px dotted tomato;
     border-radius: 50%;
 }
 
 .circle:nth-child(1) {
-    transform: translateX(-250px);
+    transform: translateX(-220px);
 }
 
 .circle:nth-child(2) {
-    transform: rotate(40deg) translateX(-250px);
+    transform: rotate(40deg) translateX(-220px);
 }
 
 .circle:nth-child(3) {
-    transform: rotate(80deg) translateX(-250px);
+    transform: rotate(80deg) translateX(-220px);
 }
 
 .circle:nth-child(4) {
-    transform: rotate(120deg) translateX(-250px);
+    transform: rotate(120deg) translateX(-220px);
 }
 
 .circle:nth-child(5) {
-    transform: rotate(160deg) translateX(-250px);
+    transform: rotate(160deg) translateX(-220px);
 }
 
 .circle:nth-child(6) {
-    transform: rotate(200deg) translateX(-250px);
+    transform: rotate(200deg) translateX(-220px);
 }
 
 .circle:nth-child(7) {
-    transform: rotate(240deg) translateX(-250px);
+    transform: rotate(240deg) translateX(-220px);
 }
 
 .circle:nth-child(8) {
-    transform: rotate(280deg) translateX(-250px);
+    transform: rotate(280deg) translateX(-220px);
 }
 
 .circle:nth-child(9) {
-    transform: rotate(320deg) translateX(-250px);
+    transform: rotate(320deg) translateX(-220px);
 }

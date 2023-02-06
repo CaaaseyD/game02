@@ -5,9 +5,9 @@ export default class extends Controller {
   static targets = []
   connect() {
     console.log("table controller connected")
-    let table = document.querySelectorAll(".cell"), i;
+    let table = document.querySelectorAll(".circle"), i;
     const buildings = Array.from(document.querySelectorAll(".buildings_class li"))
-    for (i = 0; i < table.length; ++i) {
+    for (i = 1; i < table.length; ++i) {
       let x = table[i].dataset.index;
       x = parseInt(x, 10);
       table[i].innerHTML =

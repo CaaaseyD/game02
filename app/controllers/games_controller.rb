@@ -8,6 +8,7 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(game_params)
+    @players = decide_turn(@game)
     if @game.save
       redirect_to game_path(@game)
     end
@@ -15,7 +16,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @players = decide_turn(@game)
+    @players = @game.players.sort_by{ |k| k[:turn] }
     @buildings = Building.all
   end
 
@@ -42,7 +43,7 @@ class GamesController < ApplicationController
     for i in 0..3
       players[i].turn = selected[i]
     end
-    players.each{ |p| p.save}
+    players.each{ |p| p.save!}
     return players.sort! {|x, y| x["turn"] <=> y["turn"]}
   end
 

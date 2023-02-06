@@ -1,12 +1,13 @@
-
-
-
-Current Player is: <div id ="cur_player_name"><%= @players[0].name %></div>
-Current Position is: <div id ="cur_player_name"><%= @players[0].position %></div>
-Please roll the dice!
-The dice number is:
-<div class="p-3" id="dicenumber">
-......
+<div data-controller="dice">
+  <button type="button" data-action="click->dice#nextPlayer" class="btn btn-primary">Next Player</button>
+  <div>
+    Current Player is: <div id ="cur_player_name"></div>
+    Current Position is: <div id ="cur_player_position"></div>
+    The dice number is:
+    <div class="p-3" id="dicenumber">
+    </div>
+  </div>
+  <%= render "dice" %>
 </div>
 
 <%= content_tag :div, class: "players_class", data: {players: @players} do %>

@@ -2,33 +2,10 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="dice"
 export default class extends Controller {
-  static targets = ["diceface"]
+  static targets = ["diceface", "resultboard"]
   connect() {
     console.log("dice controller connected")
  }
-
-  roll(){
-    const diceloop = this.diceloop;
-    let dicenumber = Math.floor(Math.random() * 6) + 1
-    const diceshow = document.querySelector('#dicenumber');
-    diceshow.innerHTML = `<div class="ring">
-                          <span id="loadingspan"></span>
-                          </div>`
-    diceloop(dicenumber);
-    setTimeout(function(){diceshow.innerHTML = dicenumber}, 1000);
-
-    const player = document.querySelector("#cur_player_name")
-    const players = JSON.parse(document.querySelector('.players_class').dataset.players)
-    let count = 0;
-    // showResult(dicenumber, player)
-    const cycleArray = ()=>{
-      let index = count % players.length;
-      console.log(players[index].name);
-      count++;
-    }
-    cycleArray();
-  }
-
 
   diceloop(dicenumber){
     let num = 0;
@@ -45,8 +22,49 @@ export default class extends Controller {
     }, 20)
   }
 
+  nextPlayer(){
+    // roll the dice
+    const diceloop = this.diceloop;
+    let dicenumber = Math.floor(Math.random() * 6) + 1
+    const diceshow = document.querySelector('#dicenumber');
+    diceshow.innerHTML = `<div class="ring">
+                          <span id="loadingspan"></span>
+                          </div>`
+    diceloop(dicenumber);
+    setTimeout(function(){diceshow.innerHTML = dicenumber}, 1000);
+    // next player
+    const showResult = this.showResult;
+    let player_name = document.querySelector("#cur_player_name")
+    let player_position = document.querySelector("#cur_player_position")
+    let players = JSON.parse(document.querySelector('.players_class').dataset.players)
+    if(player_name.innerText === ""){
+      player_name.innerHTML = players[0].name
+      player_position.innerHTML = players[0].position
+      showResult(dicenumber, players[0])
+    }else{
+      let cur_player = players.find( v => v.name === player_name.innerText)
+      let index = cur_player.turn % players.length;
+      player_name.innerHTML = players[index].name
+      player_position.innerHTML = players[index].position
+      showResult(dicenumber, players[index])
+    }
+  }
+
 
   showResult(dicenumber, player){
-    player.position = (dicenumber + player.position) % 9
+    let positions = Array.from(document.querySelectorAll(`.player${player.turn}`))
+    let i = positions.findIndex(a=> a.classList.contains('active'))
+    console.log(`dice number: ${dicenumber}`)
+    console.log(`initial player${player.turn} position: ${i}`)
+    for(i; i <= (player.position + dicenumber); ++i){
+      setTimeout(jump(i), 300)
+    }
+
+    function jump(i){
+      positions[i % 9].classList.remove('active');
+      positions[(i + 1) % 9].classList.add('active');
+    }
   }
 }
+// players[0].position = (players[0].position + dicenumber) % 9
+// player_position.innerHTML = players[0].position
