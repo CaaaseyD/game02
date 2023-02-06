@@ -52,18 +52,17 @@ export default class extends Controller {
 
 
   showResult(dicenumber, player){
-    let positions = Array.from(document.querySelectorAll(`.player${player.turn}`))
-    let i = positions.findIndex(a=> a.classList.contains('active'))
-    console.log(`dice number: ${dicenumber}`)
-    console.log(`initial player${player.turn} position: ${i}`)
-    for(i; i <= (player.position + dicenumber); ++i){
-      setTimeout(jump(i), 300)
-    }
-
-    function jump(i){
+    let positions = Array.from(document.querySelectorAll(`.player${player.turn}`));
+    let i = positions.findIndex(a=> a.classList.contains('active'));
+    function jump(){
       positions[i % 9].classList.remove('active');
       positions[(i + 1) % 9].classList.add('active');
+      i++;
     }
+    const incrementTimer = setInterval(jump, 200);
+    setInterval(() => {
+      clearInterval(incrementTimer);
+    }, 200 * dicenumber)
   }
 }
 // players[0].position = (players[0].position + dicenumber) % 9
