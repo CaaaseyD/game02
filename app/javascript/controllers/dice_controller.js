@@ -27,25 +27,23 @@ export default class extends Controller {
     const diceloop = this.diceloop;
     let dicenumber = Math.floor(Math.random() * 6) + 1
     const diceshow = document.querySelector('#dicenumber');
-    diceshow.innerHTML = `<div class="ring">
-                          <span id="loadingspan"></span>
-                          </div>`
+    // diceshow.innerHTML = `<div class="ring">
+    //                       <span id="loadingspan"></span>
+    //                       </div>`
     diceloop(dicenumber);
-    setTimeout(function(){diceshow.innerHTML = dicenumber}, 1000);
-    // next player
+    setTimeout(function(){diceshow.innerHTML = dicenumber}, 300 * dicenumber);
+
+    // next player & show the position
     const showResult = this.showResult;
     let player_name = document.querySelector("#cur_player_name")
-    let player_position = document.querySelector("#cur_player_position")
     let players = JSON.parse(document.querySelector('.players_class').dataset.players)
     if(player_name.innerText === ""){
       player_name.innerHTML = players[0].name
-      player_position.innerHTML = players[0].position
       showResult(dicenumber, players[0])
     }else{
       let cur_player = players.find( v => v.name === player_name.innerText)
       let index = cur_player.turn % players.length;
       player_name.innerHTML = players[index].name
-      player_position.innerHTML = players[index].position
       showResult(dicenumber, players[index])
     }
   }
@@ -54,16 +52,18 @@ export default class extends Controller {
   showResult(dicenumber, player){
     let positions = Array.from(document.querySelectorAll(`.player${player.turn}`));
     let i = positions.findIndex(a=> a.classList.contains('active'));
+    let j = (i + dicenumber) % 9;
+    let player_position = document.querySelector("#cur_player_position")
+    player_position.innerHTML = i
     function jump(){
       positions[i % 9].classList.remove('active');
       positions[(i + 1) % 9].classList.add('active');
       i++;
     }
-    const incrementTimer = setInterval(jump, 200);
+    const incrementTimer = setInterval(jump, 300);
     setInterval(() => {
       clearInterval(incrementTimer);
-    }, 200 * dicenumber)
+    }, 300 * dicenumber);
+    setTimeout(function(){document.querySelector("#next_position").innerHTML = j}, 300 * dicenumber);
   }
 }
-// players[0].position = (players[0].position + dicenumber) % 9
-// player_position.innerHTML = players[0].position

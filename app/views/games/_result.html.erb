@@ -1,14 +1,25 @@
-<div data-controller="dice">
-  <button type="button" data-action="click->dice#nextPlayer" class="btn btn-primary">Next Player</button>
-  <div>
-    Current Player is: <div id ="cur_player_name"></div>
-    Current Position is: <div id ="cur_player_position"></div>
-    The dice number is:
-    <div class="p-3" id="dicenumber">
+<turbo-frame id="set_players">
+  <ul>
+    <li><%= image_tag('icons8-insect-64.png', size: '40')%> Player: <%= @players[0].name %> | Money: $<%= @players[0].money %> | Order: <%= @players[0].turn %></li>
+    <li><%= image_tag('icons8-lamb-64.png', size: '40') %> Player: <%= @players[1].name %> | Money: $<%= @players[1].money %> | Order: <%= @players[1].turn %></li>
+    <li><%= image_tag('icons8-snake-64.png', size: '40') %> Player: <%= @players[2].name %> | Money: $<%= @players[2].money %> | Order: <%= @players[2].turn %></li>
+    <li><%= image_tag('icons8-female-lion-64.png', size: '40') %> Player: <%= @players[3].name %> | Money: $<%= @players[3].money %> | Order: <%= @players[3].turn %></li>
+  </ul>
+</turbo-frame>
+
+<div data-controller="dice" class="py-5">
+  <div class="text-center">
+    <button type="button" data-action="click->dice#nextPlayer" class="btn btn-primary">Next Round</button>
+  </div>
+  <div class="d-flex justify-content-between">
+    <div class="p-3 align-middle">
+        Current Player is: <span id ="cur_player_name"></span><br>
+        Current Position is: <span id ="cur_player_position"></span><br>
+        Next Position is: <span id ="next_position"></span><br>
+        The dice number is: <span class="p-3" id="dicenumber"></span><br>
+    </div>
+    <div class="justify-content-center">
+        <%= render "dice" %>
     </div>
   </div>
-  <%= render "dice" %>
 </div>
-
-<%= content_tag :div, class: "players_class", data: {players: @players} do %>
-<% end %>
