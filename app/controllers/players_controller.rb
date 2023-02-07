@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
-  def index
+  def update
     @game = Game.find(params[:game_id])
     @players = @game.players.sort_by{ |k| k[:turn] }
   end

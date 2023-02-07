@@ -1,0 +1,7 @@
+<ul>
+<li><%= image_tag('icons8-insect-64.png', size: '40')%> <%= render "players/player", player: @players[0] %></li>
+<li><%= image_tag('icons8-lamb-64.png', size: '40') %> <%= render "players/player", player: @players[1] %></li>
+<li><%= image_tag('icons8-snake-64.png', size: '40') %> <%= render "players/player", player: @players[2] %></li>
+<li><%= image_tag('icons8-female-lion-64.png', size: '40') %> <%= render "players/player", player: @players[3] %></li>
+</ul>
+<%= link_to "update", method: :update, data: {position: params[:position], money: params[:money], remote: true} %>

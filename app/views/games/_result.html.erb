@@ -1,12 +1,7 @@
-<turbo-frame id="set_players">
-  <ul>
-    <li><%= image_tag('icons8-insect-64.png', size: '40')%> Player: <%= @players[0].name %> | Money: $<%= @players[0].money %> | Order: <%= @players[0].turn %></li>
-    <li><%= image_tag('icons8-lamb-64.png', size: '40') %> Player: <%= @players[1].name %> | Money: $<%= @players[1].money %> | Order: <%= @players[1].turn %></li>
-    <li><%= image_tag('icons8-snake-64.png', size: '40') %> Player: <%= @players[2].name %> | Money: $<%= @players[2].money %> | Order: <%= @players[2].turn %></li>
-    <li><%= image_tag('icons8-female-lion-64.png', size: '40') %> Player: <%= @players[3].name %> | Money: $<%= @players[3].money %> | Order: <%= @players[3].turn %></li>
-  </ul>
-</turbo-frame>
-
+<%= turbo_stream_from @game, :players%>
+<div id="players">
+  <%= render @game.players %>
+</div>
 <div data-controller="dice" class="py-5">
   <div class="text-center">
     <button type="button" data-action="click->dice#nextPlayer" class="btn btn-primary">Next Round</button>
